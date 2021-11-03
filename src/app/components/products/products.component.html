@@ -39,13 +39,11 @@
     </div>
   </div>
 </div>
-<form [formGroup]="form">
-  <mat-radio-group aria-label="Select an option" formControlName="category">
-    <mat-radio-button value="allCategories">All categories</mat-radio-button>
-    <mat-radio-button value="electronics">Electronics</mat-radio-button>
-    <mat-radio-button value="fashion">Fashion</mat-radio-button>
-    <mat-radio-button value="jevelry">Jevelry</mat-radio-button>
-  </mat-radio-group>
-</form>
+<mat-radio-group aria-label="Select an option" [formControl]="categoryCtrl">
+  <mat-radio-button value="null">All categories</mat-radio-button>
+  <mat-radio-button value="electronics">Electronics</mat-radio-button>
+  <mat-radio-button value="fashion">Fashion</mat-radio-button>
+  <mat-radio-button value="jevelry">Jevelry</mat-radio-button>
+</mat-radio-group>
 <hr />
 <router-outlet></router-outlet>

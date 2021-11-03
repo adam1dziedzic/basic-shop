@@ -6,11 +6,10 @@ import { Product } from '../models/product-model';
   providedIn: 'root',
 })
 export class CartService {
+  constructor() {}
+
   public producList = new BehaviorSubject<Product[]>([]);
   public prductList$ = this.producList.asObservable();
-  public search = new BehaviorSubject<string>('');
-
-  constructor() {}
 
   addProduct(product: Product) {
     this.producList.next([...this.producList.value, product]);
