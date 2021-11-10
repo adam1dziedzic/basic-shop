@@ -1,27 +1,20 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
 import { ProductInShop } from '../models/product-model';
 
 @Injectable({
   providedIn: 'root',
 })
 export class LocalStorageService {
-  constructor() {}
+  getCart() {
+    const cart = localStorage.getItem('cart');
+    return cart ? JSON.parse(cart) : [];
+  }
 
-  public readonly cardProducts = new BehaviorSubject<ProductInShop[]>([]);
-  public readonly cardProducts$ = this.cardProducts.asObservable();
+  setCart(cart: ProductInShop[]) {
+    localStorage.setItem('cart', JSON.stringify(cart));
+  }
 
-  addToLocalStorage(data: ProductInShop[]) {
-    localStorage.setItem('cardItems', JSON.stringify(data));
-  }
-  getFromLocalStorage() {
-    const cardItems = localStorage.getItem('cardItems');
-    return cardItems ? JSON.parse(cardItems) : null;
-  }
-  loadDataToComponent() {
-    this.cardProducts.next(this.getFromLocalStorage());
-  }
-  deleteDataFromLocalStorage() {
-    this.cardProducts.next([]);
+  removeCart() {
+    localStorage.removeItem('cart');
   }
 }

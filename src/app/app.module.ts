@@ -13,7 +13,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing-module';
 import { AppComponent } from './app.component';
-import { CardComponent } from './components/card/card.component';
+import { CartComponent } from './components/cart/cart.component';
 import { HeaderComponent } from './components/header/header.component';
 import { HomeComponent } from './components/home/home.component';
 import { ListProductsComponent } from './components/products/list-products/list-products.component';
@@ -26,7 +26,7 @@ import { SingleProductComponent } from './components/products/single-product/sin
     HomeComponent,
     HeaderComponent,
     ProductsComponent,
-    CardComponent,
+    CartComponent,
     SingleProductComponent,
     ListProductsComponent,
   ],

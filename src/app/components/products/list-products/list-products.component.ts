@@ -5,7 +5,6 @@ import { ProductInShop } from 'src/app/models/product-model';
 import { ApiService } from 'src/app/services/api.service';
 import { CartService } from 'src/app/services/cart.service';
 import { FilterService } from 'src/app/services/filter.service';
-import { LocalStorageService } from 'src/app/services/local-storage.service';
 
 @Component({
   selector: 'app-list-products',
@@ -14,7 +13,6 @@ import { LocalStorageService } from 'src/app/services/local-storage.service';
 })
 export class ListProductsComponent implements OnInit {
   constructor(
-    private localStorage: LocalStorageService,
     private http: ApiService,
     private cartService: CartService,
     private filter: FilterService

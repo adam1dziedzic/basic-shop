@@ -1,5 +1,5 @@
 <hr />
-<ng-container *ngIf="(products | async)?.length">
+<ng-container *ngIf="(cart$ | async)?.length; else emptyCart">
   <div class="container">
     <div class="card-table">
       <div class="cart-product">
@@ -19,7 +19,7 @@
             </tr>
           </thead>
           <tbody>
-            <tr *ngFor="let product of products | async; let i = index">
+            <tr *ngFor="let product of cart$ | async; let i = index">
               <td>{{ i + 1 }}</td>
               <td>{{ product.title }}</td>
               <td>
@@ -30,17 +30,22 @@
               <td>{{ product.priceAfterSummary | number }}</td>
               <td>{{ product.quantity }}</td>
               <td>
-                <mat-icon style="cursor: pointer" (click)="addQuantity(product)"
+                <mat-icon
+                  style="cursor: pointer"
+                  (click)="increaseProductQuantity(product)"
                   >add_circle_outline</mat-icon
                 ><mat-icon
                   style="cursor: pointer"
-                  (click)="reduceQuantity(product)"
+                  (click)="decreaseProductQuantity(product)"
                   >remove_circle_outline</mat-icon
                 >
               </td>
 
               <td>
-                <button class="btn btn-danger" (click)="deleteProduct(product)">
+                <button
+                  class="btn btn-danger"
+                  (click)="removeProduct(product.id)"
+                >
                   Delete
                 </button>
               </td>
@@ -50,10 +55,10 @@
       </div>
     </div>
   </div>
-  <button (click)="clearAll()">Clear All Cart</button>
+  <button (click)="clearCart()">Clear All Products in Cart</button>
 </ng-container>
 
-<ng-container *ngIf="!(products | async)?.length">
+<ng-template #emptyCart>
   <mat-card class="example-card">
     <mat-card-header>
       <div mat-card-avatar class="example-header-image"></div>
@@ -74,4 +79,4 @@
       </button>
     </mat-card-actions>
   </mat-card>
-</ng-container>
+</ng-template>
